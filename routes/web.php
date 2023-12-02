@@ -49,17 +49,18 @@ Route::get('/', function () {
 
 //     });
 
+Route::get('una', function(){
+    return view('about');
+});
 
-
-
-    
+Route::get('unc', function(){
+    return view('contactus');
+});
 
         
 Route::prefix('Blog')->group(function () {
-    Route::get('/', function(){
-        return view('about');
-        });
-
+  
+  
 Route::get('Sinces', function () {
     return ('welcome to my frist since leson');
 });
@@ -75,7 +76,7 @@ Route::get('math/{id?}', function ($id=15) {
 
 Route::get('sports/{name}', function ($name) {
     return "my fevorit is: " . $name;
-    })->whereIn('name',['footble', 'basketbool','handbool']);
+    })->whereIn('name',['football', 'basketball','handball']);
 
     });
                 

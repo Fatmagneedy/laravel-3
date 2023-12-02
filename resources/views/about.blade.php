@@ -6,6 +6,12 @@
     <title>Document</title>
 </head>
 <body>
-   <h4>All Laravel routes are defined in your route files, which are located in the routes directory. These files are automatically loaded by your application's App\Providers\RouteServiceProvider . The routes/web.php file defines routes that are for your web interface.</h4> 
+   <h4> All Laravel routes are defined in your route files,
+   <br>
+     which are located in the routes directory. These files 
+     <br>
+     are automatically loaded by your application's App\Providers\RouteServiceProvider . 
+     <br>
+     The routes/web.php file defines routes that are for your web interface </h4> 
 </body>
 </html>
