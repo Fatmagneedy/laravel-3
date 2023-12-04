@@ -49,7 +49,7 @@ Route::get('/', function () {
 
 //     });
 
-Route::get('una', function(){
+Route::get('funa', function(){
     return view('about');
 });
 
