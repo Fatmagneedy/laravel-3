@@ -79,5 +79,7 @@ Route::get('sports/{name}', function ($name) {
     })->whereIn('name',['football', 'basketball','handball']);
 
     });
-                
-
+    Route::get('login', function(){
+        return view('login');
+    });
+                   
