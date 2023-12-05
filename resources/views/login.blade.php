@@ -12,7 +12,8 @@
 
 <div class="container">
   <h2>Vertical (basic) form</h2>
-  <form action="/action_page.php">
+  <form action="{{route('logged') }}" method="post">
+    @csrf
     <div class="form-group">
       <label for="email">Email:</label>
       <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">

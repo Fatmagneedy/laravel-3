@@ -82,4 +82,6 @@ Route::get('sports/{name}', function ($name) {
     Route::get('login', function(){
         return view('login');
     });
-                   
+    Route::post('logged', function(){
+        return ('you are login');
+    })->name('logged') ;                
