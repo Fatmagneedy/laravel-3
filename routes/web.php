@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ControllerExample;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -82,6 +84,19 @@ Route::get('sports/{name}', function ($name) {
     Route::get('login', function(){
         return view('login');
     });
-    Route::post('logged', function(){
-        return ('you are login');
-    })->name('logged') ;                
+    // Route::post('logged', function(){
+        // return ('you are login');
+    // })->name('logged') ;
+    Route::get('control', [ControllerExample::class, 
+'show']);
+Route::post('logged', function(Request $request) {
+    $email = $request->input('email');
+    $password = $request->input('password');
+    
+    return 'Email: ' . $email . ' Password: ' . $password;
+})->name('logged');
+
+
+
+    
+                 

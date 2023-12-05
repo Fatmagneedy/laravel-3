@@ -12,7 +12,7 @@
 
 <div class="container">
   <h2>Vertical (basic) form</h2>
-  <form action="{{route('logged') }}" method="post">
+  <form action="{{route(logged) }}" method="post">
     @csrf
     <div class="form-group">
       <label for="email">Email:</label>
