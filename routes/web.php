@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ControllerExample;
 use Illuminate\Http\Request;
+use App\Http\Controllers\CarController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -87,6 +89,10 @@ Route::get('sports/{name}', function ($name) {
     // Route::post('logged', function(){
         // return ('you are login');
     // })->name('logged') ;
+    
+
+
+
     Route::get('control', [ControllerExample::class, 
 'show']);
 Route::post('logged', function(Request $request) {
@@ -95,7 +101,13 @@ Route::post('logged', function(Request $request) {
     
     return 'Email: ' . $email . ' Password: ' . $password;
 })->name('logged');
-
+// Routes for the cars table
+    Route::get('createcars', [CarController::class, 
+     'create']);
+     Route::get('cars', [CarController::class, 
+     'index']);
+     Route::post('storecars', [CarController::class, 
+     'store'])->name('storecars');
 
 
     
