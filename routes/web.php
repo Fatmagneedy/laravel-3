@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ControllerExample;
 use Illuminate\Http\Request;
 use App\Http\Controllers\CarController;
+use App\Http\Controllers\ControllerPosts;
 
 
 /*
@@ -106,6 +107,11 @@ Route::post('logged', function(Request $request) {
      'create']);
      Route::get('cars', [CarController::class, 
      'index']);
+     Route::post('storecars', [CarController::class, 
+     'store'])->name('storecars');
+     Route::get('createcars', [CarController::class, 
+     'create']);
+     
      Route::post('storecars', [CarController::class, 
      'store'])->name('storecars');
 
