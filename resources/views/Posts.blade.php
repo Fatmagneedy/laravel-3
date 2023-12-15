@@ -27,9 +27,9 @@
     <tbody>
     @foreach ($post as $posts)
       <tr>
-        <td>{{$cars->title}}</td>
-        <td>{{$cars->description}}</td>
-        <td>@if($cars->published)
+        <td>{{$post->title}}</td>
+        <td>{{$post->description}}</td>
+        <td>@if($post->published)
             yes
             @else
             NO

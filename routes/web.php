@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ControllerExample;
 use Illuminate\Http\Request;
 use App\Http\Controllers\CarController;
-use App\Http\Controllers\ControllerPosts;
+use App\Http\Controllers\Postcontroller;
 
 
 /*
@@ -114,7 +114,23 @@ Route::post('logged', function(Request $request) {
      
      Route::post('storecars', [CarController::class, 
      'store'])->name('storecars');
-
-
-    
-                 
+     Route::controller(OrderController::class)->group(function () {
+         Route::get('/orders/{id}', 'show');
+         Route::post('/orders', 'store');
+     });
+     // Routes for the posts table
+     Route::get('createposts', [Postcontroller::class, 
+     'create']);
+     Route::get('posts', [Postcontroller::class, 
+     'index']);
+     Route::post('storepost', [Postcontroller::class, 
+     'store'])->name('storeposts');
+     Route::get('createposts', [Postcontroller::class, 
+     'create']);
+     
+     Route::post('storeposts', [Postcontroller::class, 
+     'store'])->name('storeposts');
+     Route::controller(Postcontroller::class)->group(function () {
+         Route::get('/orders/{id}', 'show');
+         Route::post('/orders', 'store');
+     });
