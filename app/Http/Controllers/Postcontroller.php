@@ -7,6 +7,7 @@ use App\Models\Posts;
 
 class Postcontroller extends Controller
 {
+    private $columns = ['title', 'description' , 'Auther' ,'published'];
     /**
      * Display a listing of the resource.
      */
@@ -31,18 +32,23 @@ class Postcontroller extends Controller
     public function store(Request $request)
     {
         // return dd($request);
-        $post = new Posts();
-        $post->title = $request->title;
-        $post->description = $request->description;
-        $post->Auther = $request->Auther;
-        if(isset($request->published)){
-            $post->published = 1;
-        }else{
-            $post->published = 0;
-        }
+        // $post = new Posts();
+        // $post->title = $request->title;
+        // $post->description = $request->description;
+        // $post->Auther = $request->Auther;
+        // if(isset($request->published)){
+        //     $post->published = 1;
+        // }else{
+        //     $post->published = 0;
+        // }
         
-        $post->save();
-        return 'Data success';
+        // $post->save();
+        // return 'Data success';
+
+        $data = $request->only($this->columns);
+        $data['published'] = isset( $request->published);
+        Posts::create($data);
+        return redirect('posts');
     }
 
     /**
@@ -58,7 +64,7 @@ class Postcontroller extends Controller
      */
     public function edit(string $id)
     {
-        //
+        return view('editposts');
     }
 
     /**

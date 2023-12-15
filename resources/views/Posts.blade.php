@@ -20,23 +20,26 @@
        
         <th>Title</th>
         <th>Description</th>
-        <th>Published</th>
         <th>Auther</th>
+        <th>Published</th>
+        <th>Edit</th>
       </tr>
       
     </thead>
     <tbody>
     @foreach ($post as $posts)
       <tr>
-        <td>{{$post->title}}</td>
-        <td>{{$post->description}}</td>
-        <td>{{$post->Auther}}</td>
-        <td>@if($post->published)
+        <td>{{$posts->title}}</td>
+        <td>{{$posts->description}}</td>
+        <td>{{$posts->Auther}}</td>
+        
+        <td>@if($posts->published)
             yes
             @else
             NO
             @endif
         </td>
+        <td><a href="editeposts//{{$posts->id}}">Edit</a></td>
       </tr>
       @endforeach 
     </tbody>

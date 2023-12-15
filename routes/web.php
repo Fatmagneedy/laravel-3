@@ -134,3 +134,7 @@ Route::post('logged', function(Request $request) {
          Route::get('/orders/{id}', 'show');
          Route::post('/orders', 'store');
      });
+     Route::get('editcar', [CarController::class, 
+     'edit']);
+     Route::get('editposts', [Postcontroller::class, 
+     'edit']);

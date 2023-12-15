@@ -14,7 +14,7 @@
   <h2>add new cars data</h2>
   <form action="{{ route('storecars') }}" method="post">
     @csrf
-    
+    @method('put')
     <div class="form-group">
       <label for="email">Email:</label>
       <input type="text" class="form-control" id="title" placeholder="title" name="title">
