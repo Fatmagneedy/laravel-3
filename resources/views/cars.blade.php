@@ -22,6 +22,7 @@
         <th>Description</th>
         <th>Published</th>
         <th>Edit</th>
+        <th>Show</th>
       </tr>
       
     </thead>
@@ -37,7 +38,8 @@
             NO
             @endif
         </td>
-        <td><a href="editcar//{{$cars->id}}">Edit</a></td>
+        <td><a href="editcar/{{$cars->id}}">Edit</a></td>
+        <td><a href="showcar/{{$cars->id}}">Show</a></td>
       </tr>
       @endforeach 
     </tbody>

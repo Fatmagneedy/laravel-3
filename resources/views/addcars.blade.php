@@ -14,17 +14,17 @@
   <h2>add new cars data</h2>
   <form action="{{ route('storecars') }}" method="post">
     @csrf
-    @method('put')
+    
     <div class="form-group">
       <label for="email">Email:</label>
-      <input type="text" class="form-control" id="title" placeholder="title" name="title">
+      <input type="text" class="form-control" id="title" placeholder="title"  name="title">
     </div>
     <div class="form-group">
       <label for="description">description:</label>
       <textarea  class="form-control" row="3" id="" cols="60" name="description"></textarea>
     </div>
     <div class="checkbox">
-      <label><input type="checkbox" name="published"> published me</label>
+      <label><input type="checkbox" name="published" > published me</label>
     </div>
     <button type="submit" class="btn btn-default">insert</button>
   </form>

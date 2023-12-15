@@ -55,15 +55,18 @@ class Carcontroller extends Controller
      */
     public function show(string $id)
     {
-        //
+        $car = Cars::findOrFail($id);
+         return view('showcar', compact('car'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
     public function edit(string $id)
+
     {
-        return view('editcar');
+        $car = Cars::findOrFail($id);
+         return view('editcar', compact('car'));
     }
 
     /**
@@ -71,7 +74,10 @@ class Carcontroller extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $data = $request->only($this->columns);
+        $data['published'] = isset( $request->published);
+        Cars::where('id', $id)->update($data);
+        return redirect('cars');
     }
 
     /**

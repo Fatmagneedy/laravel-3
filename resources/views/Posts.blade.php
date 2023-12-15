@@ -23,6 +23,7 @@
         <th>Auther</th>
         <th>Published</th>
         <th>Edit</th>
+        <th>Show</th>
       </tr>
       
     </thead>
@@ -39,7 +40,8 @@
             NO
             @endif
         </td>
-        <td><a href="editeposts//{{$posts->id}}">Edit</a></td>
+        <td><a href="editposts/{{$posts->id}}">Edit</a></td>
+        <td><a href="showposts/{{$posts->id}}">Show</a></td>
       </tr>
       @endforeach 
     </tbody>

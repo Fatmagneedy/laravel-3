@@ -134,7 +134,19 @@ Route::post('logged', function(Request $request) {
          Route::get('/orders/{id}', 'show');
          Route::post('/orders', 'store');
      });
-     Route::get('editcar', [CarController::class, 
-     'edit']);
-     Route::get('editposts', [Postcontroller::class, 
-     'edit']);
+     Route::get('editcar/{id}', [CarController::class, 
+     'edit'])->name('editcar');
+
+     Route::get('editposts/{id}', [Postcontroller::class, 
+     'edit'])->name('editposts');
+     Route::put('updatecar/{id}', [CarController::class, 
+     'update'])->name('updatecar');
+     
+     Route::put('updateposts/{id}', [Postcontroller::class, 
+     'update'])->name('updateposts');
+
+     Route::get('showcar/{id}', [CarController::class, 
+     'show'])->name('showcar');
+
+     Route::get('showposts/{id}', [Postcontroller::class, 
+     'show'])->name('showposts');
