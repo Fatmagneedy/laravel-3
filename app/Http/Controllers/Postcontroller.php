@@ -22,7 +22,7 @@ class Postcontroller extends Controller
      */
     public function create()
     {
-        return view('addposts');
+        return view('insertposts');
     }
 
     /**
@@ -34,8 +34,9 @@ class Postcontroller extends Controller
         $post = new Posts();
         $post->title = $request->title;
         $post->description = $request->description;
+        $post->Auther = $request->Auther;
         if(isset($request->published)){
-            $car->published = 1;
+            $post->published = 1;
         }else{
             $post->published = 0;
         }

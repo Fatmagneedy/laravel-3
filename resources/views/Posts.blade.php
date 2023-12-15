@@ -9,7 +9,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-@include('includs.navbar')
+@include('postnav')
 <div class="container">
   <h2>posts</h2>
              
@@ -21,6 +21,7 @@
         <th>Title</th>
         <th>Description</th>
         <th>Published</th>
+        <th>Auther</th>
       </tr>
       
     </thead>
@@ -29,6 +30,7 @@
       <tr>
         <td>{{$post->title}}</td>
         <td>{{$post->description}}</td>
+        <td>{{$post->Auther}}</td>
         <td>@if($post->published)
             yes
             @else
