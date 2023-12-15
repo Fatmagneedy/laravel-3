@@ -25,13 +25,14 @@
       <label for="description">description:</label>
       <textarea  class="form-control" row="3" id="" cols="60" name="description"></textarea>
     </div>
-    <div class="checkbox">
-      <label><input type="checkbox" name="published"> published me</label>
-    </div>
     <div class="form-group">
       <label for="Auther">Auther:</label>
       <input type="text" class="form-control" id="Auther" placeholder="Auther" name="Auther">
     </div>
+    <div class="checkbox">
+      <label><input type="checkbox" name="published"> published me</label>
+    </div>
+    
     <button type="submit" class="btn btn-default">insert</button>
   </form>
 </div>

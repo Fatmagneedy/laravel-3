@@ -11,5 +11,6 @@
     <h5>{{$posts->created_at}}</h5>
     <h5>{{$posts->updated_at}}</h5>
     <p>{{$posts->description}}</p>
+    
 </body>
 </html>

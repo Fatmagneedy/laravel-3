@@ -21,6 +21,7 @@
         <th>Title</th>
         <th>Description</th>
         <th>Auther</th>
+        <th>created_at</th>
         <th>Published</th>
         <th>Edit</th>
         <th>Show</th>
@@ -33,7 +34,7 @@
         <td>{{$posts->title}}</td>
         <td>{{$posts->description}}</td>
         <td>{{$posts->Auther}}</td>
-        
+        <td>{{$posts->created_at}}</td>
         <td>@if($posts->published)
             yes
             @else

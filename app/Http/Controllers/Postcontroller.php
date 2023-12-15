@@ -7,7 +7,7 @@ use App\Models\Posts;
 
 class Postcontroller extends Controller
 {
-    private $columns = ['title', 'description' , 'Auther' ,'published'];
+    private $columns = ['title', 'description' , 'Auther' ,'published',];
     /**
      * Display a listing of the resource.
      */
