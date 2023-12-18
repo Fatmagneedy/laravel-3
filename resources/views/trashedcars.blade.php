@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>cars list</title>
+  <title>Trashed cars list</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -11,7 +11,7 @@
 <body>
 @include('includs.navbar')
 <div class="container">
-  <h2>cars list</h2>
+  <h2> Trashed cars list</h2>
              
   <table class="table table-striped">
     <thead>
@@ -21,29 +21,25 @@
         <th>Title</th>
         <th>Description</th>
         <th>Published</th>
-        <th>Edit</th>
-        <th>Show</th>
-        <th>Delete</th>
-        
+         <th>Delete</th>
       </tr>
       
     </thead>
     <tbody>
-    @foreach ($car as $cars)
+      @foreach ($cars as $car)
       <tr>
-        <td>{{$cars->title}}</td>
-        <td>{{$cars->description}}</td>
+        <td>{{$car->title}}</td>
+        <td>{{$car->description}}</td>
         
-        <td>@if($cars->published)
+        <td>@if($car->published)
             yes
             @else
             NO
             @endif
         </td>
-        <td><a href="editcar/{{$cars->id}}">Edit</a></td>
-        <td><a href="showcar/{{$cars->id}}">Show</a></td>
-        <td><a href="deletcar/{{$cars->id}}" onclick="return confirm('Are you sure you want to delete?')">Delete</a></td>
-          
+       
+        {{-- <td><a href="deletcar/{{$car->id}}" onclick="return confirm('Are you sure you want to delete?')">Delete</a></td> --}}
+        <td><a href="forceDeletecars/{{$car->id}}" onclick="return confirm('Are you sure you want to delete?')">forceDelete</a></td> 
       </tr>
       @endforeach 
     </tbody>

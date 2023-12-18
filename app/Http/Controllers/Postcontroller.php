@@ -7,7 +7,7 @@ use App\Models\Posts;
 
 class Postcontroller extends Controller
 {
-    private $columns = ['title', 'description' , 'Auther' ,'published',];
+    // private $columns = ['title', 'description' , 'Auther' ,'published',];
     /**
      * Display a listing of the resource.
      */
@@ -45,10 +45,21 @@ class Postcontroller extends Controller
         // $post->save();
         // return 'Data success';
 
-        $data = $request->only($this->columns);
-        $data['published'] = isset( $request->published);
-        Posts::create($data);
-        return redirect('posts');
+        // $data = $request->only($this->columns);
+        // $data['published'] = isset( $request->published);
+        // Posts::create($data);
+        // return redirect('posts');
+            $data = $request->validate([
+            'title'=>'required|string|max:50',
+            'description'=> 'required|string',
+            'Auther'=> 'required|string',
+            ]);
+            $data['published'] = isset( $request->published);
+            Posts::create($data);
+            return redirect('posts');
+
+
+
     }
 
     /**
@@ -85,6 +96,23 @@ class Postcontroller extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        Posts::where('id', $id)->delete();
+        return redirect('posts');
+    }
+    public function trashed()
+
+    {
+        $posts = Posts::onlyTrashed()->get();
+        return view('trashedposts', compact('posts'));
+    }
+    public function forceDelete(string $id)
+    {
+        Posts::where('id', $id)->forceDelete();
+        return redirect('posts');
+    }
+    public function restore(string $id)
+    {
+        Posts::where('id', $id)->restore();
+        return redirect('posts');
     }
 }

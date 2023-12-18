@@ -150,3 +150,33 @@ Route::post('logged', function(Request $request) {
 
      Route::get('showposts/{id}', [Postcontroller::class, 
      'show'])->name('showposts');
+
+     Route::get('deletcar/{id}', [CarController::class, 
+     'destroy'])->name('deletcar');
+
+     Route::get('deleteposts/{id}', [Postcontroller::class, 
+     'destroy'])->name('deleteposts');
+
+     Route::get('SoftDeletescar/{id}', [CarController::class, 
+     'SoftDeletes'])->name('SoftDeletescar');
+
+     Route::get('SoftDeletesposts/{id}', [Postcontroller::class, 
+     'SoftDeletes'])->name('SoftDeletesposts');
+
+     Route::get('trashedposts', [Postcontroller::class, 
+     'trashed'])->name('trashedposts');
+
+     Route::get('trashedcars', [CarController::class, 
+     'trashed'])->name('trashedcars');
+
+     Route::get('forceDeleteposts/{id}', [Postcontroller::class, 
+     'forceDelete'])->name('forceDeleteposts');
+
+     Route::get('forceDeletecars/{id}', [CarController::class, 
+     'forceDelete'])->name('forceDeletecars');
+
+     Route::get('restoreposts/{id}', [Postcontroller::class, 
+     'restore'])->name('restoreposts');
+
+     Route::get('restorecars/{id}', [CarController::class, 
+     'restore'])->name('restorecars');

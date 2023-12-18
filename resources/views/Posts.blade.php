@@ -25,6 +25,7 @@
         <th>Published</th>
         <th>Edit</th>
         <th>Show</th>
+        <th>Delete</th>
       </tr>
       
     </thead>
@@ -43,6 +44,8 @@
         </td>
         <td><a href="editposts/{{$posts->id}}">Edit</a></td>
         <td><a href="showposts/{{$posts->id}}">Show</a></td>
+        <td><a href="deleteposts/{{$posts->id}}" onclick="return confirm('Are you sure you want to delete?')">Delete</a></td>
+        
       </tr>
       @endforeach 
     </tbody>
