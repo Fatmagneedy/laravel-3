@@ -118,4 +118,6 @@ class Carcontroller extends Controller
         Cars::where('id', $id)->restore();
         return redirect('cars');
     }
+      
+        
 }

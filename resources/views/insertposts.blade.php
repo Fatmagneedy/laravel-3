@@ -35,6 +35,7 @@
       <label for="Auther">Auther:</label>
       <input type="text" class="form-control" id="Auther" placeholder="Auther"value="{{old('Auther')}}" name="Auther">
     </div>
+    
     <div class="checkbox">
       <label><input type="checkbox" name="published"> published me</label>
     </div>

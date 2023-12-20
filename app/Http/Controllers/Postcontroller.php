@@ -115,4 +115,6 @@ class Postcontroller extends Controller
         Posts::where('id', $id)->restore();
         return redirect('posts');
     }
+
+  
 }
