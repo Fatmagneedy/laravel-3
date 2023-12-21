@@ -6,6 +6,6 @@
     <title>Document</title>
 </head>
 <body>
-  <h1> my frist blade test file</h1>  
+  <img src="{{ asset('assets/img/car-rent-1.png')}}" alt="">
 </body>
 </html>

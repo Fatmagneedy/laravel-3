@@ -180,3 +180,14 @@ Route::post('logged', function(Request $request) {
 
      Route::get('restorecars/{id}', [CarController::class, 
      'restore'])->name('restorecars');
+
+     Route::get('test', function () {
+            return view('test');
+        });
+        Route::get('image', function () {
+            return view('image');
+        });
+        Route::post('imageupload', [ControllerExample::class, 
+        'upload'])->name('imageupload');
+        
+

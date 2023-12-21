@@ -13,7 +13,7 @@ class Posts extends Model
         'description',
         'Auther',
         'published',
-        
+        'image',
     ];
         
 }

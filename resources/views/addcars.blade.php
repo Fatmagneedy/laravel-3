@@ -30,9 +30,16 @@
       {{$message}}
       @enderror
     </div>
+    <div class="form-group">
+      <label for="image">Image:</label>
+      <input type="file" class="form-control" id="image" placeholder="Enter image" name="image">
+      @error('image')
+        {{ $message }}
+      @enderror
+    </div>
     
     <div class="checkbox">
-      <label><input type="checkbox" name="published" > published me</label>
+      <label><input type="checkbox" name="published" @checked( old('published')) > published me</label>
     </div>
     <button type="submit" class="btn btn-default">insert</button>
   </form>

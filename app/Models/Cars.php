@@ -13,6 +13,7 @@ class Cars extends Model
         'title',
         'description',
         'published',
+        'image',
         
         ];
 }

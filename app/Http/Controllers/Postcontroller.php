@@ -4,9 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Posts;
-
+use App\Traits\common;
 class Postcontroller extends Controller
 {
+    use Common;
     // private $columns = ['title', 'description' , 'Auther' ,'published',];
     /**
      * Display a listing of the resource.
@@ -49,11 +50,15 @@ class Postcontroller extends Controller
         // $data['published'] = isset( $request->published);
         // Posts::create($data);
         // return redirect('posts');
+
+           $messages= $this->messages();
             $data = $request->validate([
             'title'=>'required|string|max:50',
             'description'=> 'required|string',
             'Auther'=> 'required|string',
+            'image' => 'required|mimes:png,jpg,jpeg|max:2048',
             ]);
+            
             $data['published'] = isset( $request->published);
             Posts::create($data);
             return redirect('posts');
@@ -116,5 +121,19 @@ class Postcontroller extends Controller
         return redirect('posts');
     }
 
-  
+    public function messages()
+
+    {
+    
+    
+      return [
+        'title.required'=>'title is required',
+        'title.string'=>'Should be string',
+        'description.required'=> 'should be text',
+        'image.required'=> 'Please be sure to select an image',
+                'image.mimes'=> 'Incorrect image type',
+                'image.max'=> 'Max file size exceeded',
+        ];   
+        
+}
 }
