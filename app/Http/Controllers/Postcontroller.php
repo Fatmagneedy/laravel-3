@@ -58,7 +58,7 @@ class Postcontroller extends Controller
             'Auther'=> 'required|string',
             'image' => 'required|mimes:png,jpg,jpeg|max:2048',
             ]);
-            
+            $fileName = $this->uploadFile($request->image, 'images');
             $data['published'] = isset( $request->published);
             Posts::create($data);
             return redirect('posts');

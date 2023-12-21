@@ -56,7 +56,7 @@ class Carcontroller extends Controller
             'description'=> 'required|string',
             'image' => 'required|mimes:png,jpg,jpeg|max:2048',
             ], $messages);
-            $file_name = $this->uploadedFile($request->image, 'images');
+            $fileName = $this->uploadFile($request->image, 'images');
             $data['published'] = isset( $request->published);
             Cars::create($data);
             return redirect('cars');
