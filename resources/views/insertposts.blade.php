@@ -14,7 +14,7 @@
 
 <div class="container">
   <h2>add new cars data</h2>
-  <form action="{{ route('storeposts') }}" method="post">
+  <form action="{{ route('storeposts') }}" method="post" enctype="multipart/form-data">
     @csrf
     
     <div class="form-group">
@@ -33,7 +33,7 @@
     </div>
     <div class="form-group">
       <label for="Auther">Auther:</label>
-      <input type="text" class="form-control" id="Auther" placeholder="Auther"value="{{old('Auther')}}" name="Auther">
+      <input type="text" class="form-control" id="Auther" placeholder="Auther" value="{{old('Auther')}}" name="Auther">
     </div>
     
     <div class="form-group">

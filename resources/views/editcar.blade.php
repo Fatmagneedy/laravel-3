@@ -12,7 +12,7 @@
 @include('includs.navbar')
 <div class="container">
   <h2>edit cars data</h2>
-  <form action="{{ route('updatecar' ,$car->id)}}" method="post">
+  <form action="{{ route('updatecar' ,$car->id)}}" method="post" enctype="multipart/form-data">
   
     @csrf
     @method('put')
@@ -26,7 +26,11 @@
     </div>
     <div class="form-group">
       <label for="image">Image:</label>
-      <input type="file" class="form-control" id="image" placeholder="Enter image" name="image">
+      <input type="file" class="form-control" id="image" placeholder="Enter image"  value="{{old('image')}}"name="image">
+      <br>
+      
+     <img src="{{ asset('assets/img/'.$car->image) }}" alt="image" style="width: 200px">
+      
       @error('image')
         {{ $message }}
       @enderror

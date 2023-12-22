@@ -139,6 +139,7 @@ Route::post('logged', function(Request $request) {
 
      Route::get('editposts/{id}', [Postcontroller::class, 
      'edit'])->name('editposts');
+     
      Route::put('updatecar/{id}', [CarController::class, 
      'update'])->name('updatecar');
      

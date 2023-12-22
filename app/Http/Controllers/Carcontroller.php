@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Cars;
-use App\Traits\common;
+use App\Traits\Common;
 class Carcontroller extends Controller
 {
     use Common;
@@ -48,17 +48,21 @@ class Carcontroller extends Controller
         // $data['published'] = isset( $request->published);
         // Cars::create($data);
         // return redirect('cars');
-         $messages= $this->messages();
-         
-
-            $data = $request->validate([
-            'title'=>'required|string|max:50',
-            'description'=> 'required|string',
+        $messages = $this->messages();
+        
+        $data = $request->validate([
+            'title' => 'required|string|max:50',
+            'description' => 'required|string',
             'image' => 'required|mimes:png,jpg,jpeg|max:2048',
             ], $messages);
-            $fileName = $this->uploadFile ($request->image, 'assets/images');
+            
+            
+            $fileName = $this->uploadFile($request->image,'assets/img');
+            $data['image'] = $fileName;
+            
             $data['published'] = isset( $request->published);
-            $data['image'] = isset( $request->image);
+            
+          
             Cars::create($data);
             return redirect('cars');
     }
@@ -79,6 +83,7 @@ class Carcontroller extends Controller
 
     {
         $car = Cars::findOrFail($id);
+        
          return view('editcar', compact('car'));
     }
 
@@ -87,10 +92,32 @@ class Carcontroller extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $data = $request->only($this->columns);
-        $data['published'] = isset( $request->published);
-        Cars::where('id', $id)->update($data);
-        return redirect('cars');
+
+        $messages = $this->messages();
+        
+        $data = $request->validate([
+            'title' => 'required|string|max:50',
+            'description' => 'required|string',
+            'image' => 'nullable|mimes:png,jpg,jpeg|max:2048',
+            ], $messages);
+
+            $car = Cars::findOrFail($id);
+            $car->title = $data['title'];
+            $car->description = $data['description'];
+
+            if ($request->hasFile('image')) {
+                // Delete the previous image
+            $this->deleteFile($car->image, 'assets/img');
+            $fileName = $this->uploadFile($request->image,'assets/img');
+            $car['image'] = $fileName;
+            }
+            $data['published'] = isset( $request->published);
+            Cars::where('id', $id)->update($data);
+            $car->save();
+            return redirect('cars');
+        // $data = $request->only($this->columns);
+        
+        
     }
 
     /**
@@ -138,5 +165,13 @@ class Carcontroller extends Controller
                 'image.max'=> 'Max file size exceeded',
         ];   
         
-}
+        }
+        private function deleteFile($fileName, $path)
+        {
+            $filePath = public_path($path . '/' . $fileName);
+
+            if (file_exists($filePath)) {
+                unlink($filePath);
+            }
+        }
 }

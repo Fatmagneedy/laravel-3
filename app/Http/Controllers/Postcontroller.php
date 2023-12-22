@@ -51,16 +51,18 @@ class Postcontroller extends Controller
         // Posts::create($data);
         // return redirect('posts');
 
-           $messages= $this->messages();
-            $data = $request->validate([
-            'title'=>'required|string|max:50',
-            'description'=> 'required|string',
-            'Auther'=> 'required|string',
+        $messages = $this->messages();
+        
+        $data = $request->validate([
+            'title' => 'required|string|max:50',
+            'description' => 'required|string',
+            'Auther' => 'required|string',
             'image' => 'required|mimes:png,jpg,jpeg|max:2048',
-            ]);
-            $fileName = $this->uploadFile($request->image, 'assets / images');
+            ], $messages);
+            $fileName = $this->uploadFile($request->image,'assets/img');
+            $data['image'] = $fileName;
             $data['published'] = isset( $request->published);
-            $data['image'] = isset( $request->image);
+            $data['Auther'] = isset( $request->Auther);
             Posts::create($data);
             return redirect('posts');
 
@@ -91,10 +93,32 @@ class Postcontroller extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $data = $request->only($this->columns);
-        $data['published'] = isset( $request->published);
-        Posts::where('id', $id)->update($data);
-        return redirect('posts');
+        // $data = $request->only($this->columns);
+
+        $messages = $this->messages();
+        $data = $request->validate([
+            'title' => 'required|string|max:50',
+            'description' => 'required|string',
+            'image' => 'nullable|mimes:png,jpg,jpeg|max:2048',
+            ], $messages);
+
+            $posts = Posts::findOrFail($id);
+            $posts->title = $data['title'];
+            $posts->description = $data['description'];
+
+            if ($request->hasFile('image')) {
+                // Delete the previous image
+            $this->deleteFile($posts->image, 'assets/img');
+            $fileName = $this->uploadFile($request->image,'assets/img');
+            $posts['image'] = $fileName;
+            }
+        
+           $data['published'] = isset( $request->published);
+        
+        // $data['image'] = $fileName;
+            Posts::where('id', $id)->update($data);
+            $posts->save();
+             return redirect('posts');
     }
 
     /**
@@ -137,4 +161,12 @@ class Postcontroller extends Controller
         ];   
         
 }
+        private function deleteFile($fileName, $path)
+        {
+            $filePath = public_path($path . '/' . $fileName);
+
+            if (file_exists($filePath)) {
+                unlink($filePath);
+            }
+        }
 }
