@@ -24,6 +24,7 @@
       <label for="description">description:</label>
       <textarea  class="form-control" row="3" id="" cols="60" name="description">{{$car->description}}</textarea>
     </div>
+    
     <div class="form-group">
       <label for="image">Image:</label>
       <input type="file" class="form-control" id="image" placeholder="Enter image"  value="{{old('image')}}"name="image">
@@ -35,6 +36,20 @@
         {{ $message }}
       @enderror
     </div>
+    
+
+    
+
+    <div class="form-group">
+      <label for="cat_id">Category</label>
+      <select name="cat_id" class="form-control">
+          @foreach($categories as $category)
+              <option value="{{ $category->cat_name }}" @if(isset($car) && $car->cat_id == $category->id) selected @endif>
+                  {{ $category->name }}
+              </option>
+          @endforeach
+      </select>
+  </div>
     <div class="checkbox">
       <label><input type="checkbox" name="published" @checked($car->published)> published me</label>
     </div>

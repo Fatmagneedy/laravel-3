@@ -20,7 +20,9 @@
        
         <th>Title</th>
         <th>Description</th>
+        <th>categories</th>
         <th>Published</th>
+        
         <th>Edit</th>
         <th>Show</th>
         <th>Delete</th>
@@ -33,7 +35,7 @@
       <tr>
         <td>{{$cars->title}}</td>
         <td>{{$cars->description}}</td>
-        
+        <td>{{$cars->cat_id}}</td>
         <td>@if($cars->published)
             yes
             @else

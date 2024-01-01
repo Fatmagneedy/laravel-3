@@ -191,4 +191,5 @@ Route::post('logged', function(Request $request) {
         Route::post('imageupload', [ControllerExample::class, 
         'upload'])->name('imageupload');
         
+        
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Cars;
+use App\Models\categories;
 use App\Traits\Common;
 class Carcontroller extends Controller
 {
@@ -14,7 +15,8 @@ class Carcontroller extends Controller
      */
     public function index()
     {
-     $car = cars::get() ; 
+     $car = cars::get();
+     
      
       return view('cars', compact('car'));
     }
@@ -83,9 +85,13 @@ class Carcontroller extends Controller
 
     {
         $car = Cars::findOrFail($id);
-        
-         return view('editcar', compact('car'));
+        $categories = Categories::get();
+         return view('editcar', compact('car','categories'));
+
+         
+
     }
+    
 
     /**
      * Update the specified resource in storage.
