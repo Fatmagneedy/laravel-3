@@ -190,6 +190,6 @@ Route::post('logged', function(Request $request) {
         });
         Route::post('imageupload', [ControllerExample::class, 
         'upload'])->name('imageupload');
-        
-        
-
+   
+Auth::routes(['verify'=>true]);
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

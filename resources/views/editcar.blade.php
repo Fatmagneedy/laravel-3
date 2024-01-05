@@ -40,8 +40,9 @@
   <div class="form-group">
     <label for="category">Category:</label>
     <select name="cat_id" id="">
-   @foreach($categories as $category)      
-        <option value="{{ $category->id }}">{{ $category->cat_name }}>Category</option>
+   @foreach($categories as $category) 
+   <option value="{{ $category->id }}" @if ($car->category && $category->cat_name == $car->category['cat_name']) selected @endif>{{ $category->cat_name }}</option>     
+        {{-- <option value="{{ $category->id }}" @selected($category->cat_name == $car->category['cat_name'])>{{ $category->cat_name }}</option> --}}
     @endforeach 
     </select>
     @error('cat_id')
