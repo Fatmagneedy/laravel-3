@@ -32,19 +32,12 @@
     </div>
     <div class="form-group">
       @section('content')
-    <h1>Create Car</h1>
-
-    <div class="form-group">
-      <label for="cat_id">Category</label>
-      <select name="cat_id" class="form-control">
-          @foreach($categories as $category)
-              <option value="{{ $category->id }}" @if(isset($car) && $car->cat_id == $category->id) selected @endif>
-                  {{ $category->name }}
-              </option>
-          @endforeach
-      </select>
-  </div>
+   
     
+      
+  </div> 
+    
+  
     <div class="form-group">
       <label for="image">Image:</label>
       <input type="file" class="form-control" id="image" placeholder="Enter image"  value="{{old('image')}}"name="image">
@@ -54,6 +47,19 @@
         {{ $message }}
       @enderror
     </div>
+    <div class="form-group">
+      <label for="category">Category:</label>
+      <select name="cat_id" id="">
+        <option value="">Select Category</option>
+        @foreach($categories as $category)
+          <option value="{{ $category->id }}">{{ $category->cat_name }}</option>
+        @endforeach
+      </select>
+      @error('cat_id')
+        {{ $message }}
+      @enderror
+    </div>
+   
     
     <div class="checkbox">
       <label><input type="checkbox" name="published" @checked( old('published')) > published me</label>

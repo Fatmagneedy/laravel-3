@@ -36,26 +36,26 @@
         {{ $message }}
       @enderror
     </div>
-    
-
-    
-
-    <div class="form-group">
-      <label for="cat_id">Category</label>
-      <select name="cat_id" class="form-control">
-          @foreach($categories as $category)
-              <option value="{{ $category->cat_name }}" @if(isset($car) && $car->cat_id == $category->id) selected @endif>
-                  {{ $category->name }}
-              </option>
-          @endforeach
-      </select>
   </div>
-    <div class="checkbox">
-      <label><input type="checkbox" name="published" @checked($car->published)> published me</label>
-    </div>
-    <button type="submit" class="btn btn-default">update</button>
-  </form>
+  <div class="form-group">
+    <label for="category">Category:</label>
+    <select name="cat_id" id="">
+   @foreach($categories as $category)      
+        <option value="{{ $category->id }}">{{ $category->cat_name }}>Category</option>
+    @endforeach 
+    </select>
+    @error('cat_id')
+      {{ $message }}
+    @enderror
+  </div>
+  <input type="hidden" name="oldImage" value="{{ $car->image }}">
+  <div class="checkbox">
+    <label><input type="checkbox" name="published" @checked($car->published)> Published me</label>
+  </div>
+  <button type="submit" class="btn btn-default">Update</button>
+</form>
 </div>
+
 
 </body>
 </html>
