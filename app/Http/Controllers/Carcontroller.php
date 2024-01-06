@@ -54,6 +54,7 @@ class Carcontroller extends Controller
     $data = $request->validate([
         'title' => 'required|string|max:50',
         'description' => 'required|string',
+        'mobile' => 'required|string|max:11',
         'image' => 'required|mimes:png,jpg,jpeg|max:2048',
     ], $messages);
     
